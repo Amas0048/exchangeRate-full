@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <form action="" enctype="multipart/form-data">
+    <div class="col">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" [(ngModel)]="user.name">
+    </div>
+    <div class="col">
+      <label for="position">Position</label>
+      <input type="text" class="form-control" name="position" [(ngModel)]="user.position">
+    </div>
+    <div class="col m-2">
+        <input type="file" name="imageFile" (change)="imageHolder($event)">
+    </div>
+    <div class="col">
+        <button class="btn btn-primary btn-block" (click)="save()">Save</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,80 @@
+
+
+<div class="container mt-1">
+    <div class="row py-3 px-4">
+      <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/">Currency</a></li>
+                <li class="breadcrumb-item"><a routerLink="/rate">Currency Rate</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Currency Converter</li>
+              </ol>
+            </nav>
+        <h1 class="text-bold text-center  mt-5">Currency Converter <i class="fa fa-calculator ml-2"></i></h1>
+      </div>
+    
+    </div>
+    <div class="row py-2 px-4">
+      <div class="col-md-12 ">
+        <div class="card panel mb-5">
+          <div class="card-body form-card">
+            <div class="panel-group" role="tablist" aria-multiselectable="true">
+              <div class="panel-default">
+                <div class="panel-heading text-center" role="tab" id="headingBasic">
+                  <h4 class="panel-title font-weight-bold secondary-color pt-2">Converter</h4>
+                  <p class="subtitle mt-0 mb-2  ">Please input the necessary data</p>
+                </div>
+                <hr>
+                <div id="collapseBasic" class="panel-collapse show mt-2" role="tabpanel" aria-labelledby="headingBasic">
+                  <div class="panel-body p-3">
+                    <div class="col-md-10 offset-md-1">
+                      <div class="form-body">
+                          <div class="row mb-2">
+                                  <label for="rate" class="col-md-4">From Currency:</label>
+                                  <div class="col-md-4">
+                                    <select class="form-control" name="fromCurrency" [(ngModel)]="conversion.fromCurrency.code">
+                                      <option value="null"></option>
+                                      <option *ngFor="let curr of currencies" [ngValue]="curr.code">{{curr.name}} {{curr.code}}</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <input name="fromAmount"  [(ngModel)]="fromAmount" class="form-control">
+                                  </div>
+                            </div>
+                            <div class="row">
+                                <label for="rate" class="col-md-4">To Currency:</label>
+                                <div class="col-md-4">
+                                  <select class="form-control" name="toCurrency" [(ngModel)]="conversion.toCurrency.code">
+                                    <option value="null"></option>
+                                    <option *ngFor="let curr of currencies" [ngValue]="curr.code">{{curr.name}} {{curr.code}}</option>
+                                  </select>
+                                </div>
+                                <div class="col-md-4">
+                                  <input disabled name="toAmount"  [(ngModel)]="toAmount" class="form-control">
+                                </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <div class="p-3">
+              <div class="row">
+               
+                <div class="col-md-2 offset-md-10">
+                  <button class="btn  btn-block btn-primary hover-raise" type="button" (click)="getRate()">
+                    Convert</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>

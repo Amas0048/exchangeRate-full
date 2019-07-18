@@ -1,0 +1,38 @@
+body{
+    background: #f0ffea!important;
+    color: rgb(2, 175, 2)!important;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif!important;
+    font-size: 12px;
+}
+
+.edit-blue{
+    color: #0062cc;
+}
+
+.del-red{
+    color: rgb(221, 5, 5);
+}
+
+i.fa-money:before,
+i.fa-money:after{
+    color: rgb(2, 175, 2);
+}
+
+.breadcrumb{
+    background: #f0ffea!important;
+}
+
+.card, .card-footer{
+    background: none!important;
+    border: none!important;
+}
+
+.table td, .table th {
+    color: rgb(2, 175, 2);
+    padding: 5px;
+    font-size: 14px;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+

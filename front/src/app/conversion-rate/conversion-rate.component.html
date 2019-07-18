@@ -1,0 +1,132 @@
+<div class="container mt-1">
+  <div class="row py-3 px-4">
+    <div class="col-md-12">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/">Currency</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Currency Rate</li>
+              <li class="breadcrumb-item"><a routerLink="/ex-form">Currency Converter</a></li>
+            </ol>
+          </nav>
+      <h1 class="text-bold text-center mt-5">Conversion Rate <i class="fa fa-exchange ml-2"></i></h1>
+    </div>
+  </div>
+  <div class="row py-2 px-4">
+    <div class="col-md-12" *ngIf="view == 0">
+      <div class="card panel mb-5">
+        <div class="card-body form-card">
+          <div class="panel-group" role="tablist" aria-multiselectable="true">
+            <div class="panel-default">
+              <div class="panel-heading text-center" role="tab" id="headingBasic">
+                <h4 class="panel-title font-weight-bold secondary-color pt-2">Currency Rate Creation</h4>
+                <p class="subtitle mt-0 mb-2  ">Please fill in the following currency rate data</p>
+              </div>
+              <hr>
+              <div id="collapseBasic" class="panel-collapse show mt-2" role="tabpanel" aria-labelledby="headingBasic">
+                <div class="panel-body">
+                  <div class="col-md-10 offset-md-1">
+                    <div class="form-body">
+                        <div class="row mb-1">
+                          <label for="fromCurrency" class="col-md-4">From Currency:</label>
+                          <div class="col-md-8">
+                            <select name="fromCurrency" [(ngModel)]="rate.fromCurrency" class="form-control" [compareWith]="equals">
+                              <option value="null"></option>
+                              <option *ngFor="let curr of currencies" [ngValue]="curr">{{curr.name}}  {{curr.code}}</option>
+                            </select>
+                          </div>
+                        </div>
+                      
+                        <div class="row mb-1">
+                          <label for="toCurrency" class="col-md-4">To Currency:</label>
+                          <div class="col-md-8">
+                            <select name="toCurrency" [(ngModel)]="rate.toCurrency" class="form-control" [compareWith]="equals">
+                                <option value="null"></option>
+                                <option *ngFor="let curr of currencies" [ngValue]="curr">{{curr.name}}  {{curr.code}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <label for="rate" class="col-md-4">Rate:</label>
+                          <div class="col-md-8">
+                            <input name="rate" [(ngModel)]="rate.rate" class="form-control">
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="p-3">
+            <div class="row">
+
+              <div class="col-md-2 offset-md-8">
+                <button class="btn  btn-block btn-outline-primary" type="button" (click)="goBack()">
+                  Cancel <i class="fa fa-ban ml-1"></i></button>
+              </div>
+              <div class="col-md-2">
+                <button class="btn  btn-block btn-primary hover-raise" type="button" (click)="save()">
+                  Save <i class="fa fa-check ml-1"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 " *ngIf="view == 1">
+      <div class="card panel mb-5">
+        <div class="card-body form-card">
+          <div class="panel-group" role="tablist" aria-multiselectable="true">
+            <div class="panel-default">
+              <div class="panel-heading p-2" role="tab" id="headingBasic">
+                <div class="row">
+                  <div class="col-md-6">
+                    <h4 class="panel-title font-weight-bold secondary-color pt-2">Created Conversion Rate</h4>
+                    <p class="subtitle mt-0 mb-2  ">Below are the list of created conversion rates</p>
+                  </div>
+                  <div class="col-md-3 offset-md-3">
+                      <button class="btn  btn-block btn-primary hover-raise" type="button" (click)="create()">
+                        <i class="fa fa-plus-circle mr-2"></i> New Rate</button>
+                  </div>
+                </div>
+
+              </div>
+              <hr>
+              <div id="collapseBasic" class="panel-collapse show mt-2" role="tabpanel" aria-labelledby="headingBasic">
+                <div class="panel-body">
+                  <table class="table table-borderless table-hover text-center">
+                    <thead>
+                      <th>S/N</th>
+                      <th scope="col">From Currency</th>
+                      <th scope="col">To Currency</th>
+                      <th scope="col">Conversion Rate</th>
+                      <th>Actions</th>
+                      <th></th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let r of rates; let i = index;">
+                        <td>{{i+1}}</td>
+                        <td>{{r.fromCurrency.name}}</td>
+                        <td>{{r.toCurrency.name}}</td>
+                        <td>{{r.rate}}</td>
+                        <td><a (click)="edit(r)"><i class="fa fa-pencil mr-3 edit-blue"></i></a>
+                        <a (click)="delete(r)"><i class="fa fa-trash del-red"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
